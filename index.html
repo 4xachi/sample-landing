@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Google Gemini is Google's multimodal AI model, built from the ground up for native reasoning across text, code, audio, and vision.">
+  <title>Google Gemini: Multimodal Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Mona+Sans:wdth,wght@100,400;100,500;125,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Global site header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-bar" aria-label="Main navigation">
+        <a href="#" class="brand-lockup">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2C12 7.52 7.52 12 2 12C7.52 12 12 16.48 12 22C12 16.48 16.48 12 22 12C16.48 12 12 7.52 12 2Z" fill="currentColor"/>
+          </svg>
+          <span>Google Gemini</span>
+          <span class="brand-badge">gemini-1.5-pro</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#models" class="nav-link">Models</a></li>
+          <li><a href="#multimodal" class="nav-link">Multimodal</a></li>
+          <li><a href="#recall" class="nav-link">Recall</a></li>
+          <li><a href="#api" class="nav-link">API</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://aistudio.google.com" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Try Studio</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title" class="hero-headline">Intelligence at multimodal scale.</h1>
+            <p class="hero-lead">Native reasoning across text, code, audio, and visual inputs.</p>
+            <div class="hero-actions">
+              <a href="https://aistudio.google.com" class="btn btn--primary" target="_blank" rel="noopener">Open Studio</a>
+              <a href="#models" class="btn btn--secondary">Explore models</a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="meta-stat">
+                <span class="meta-number">2M</span>
+                <span class="meta-label">token context window</span>
+              </div>
+              <div class="meta-stat">
+                <span class="meta-number">90.04%</span>
+                <span class="meta-label">MMLU benchmark score</span>
+              </div>
+              <div class="meta-stat">
+                <span class="meta-number">&lt;200ms</span>
+                <span class="meta-label">time to first token</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signature interactive inference console -->
+          <div class="console-wrapper" aria-label="Interactive Gemini playground console">
+            <div class="console-bar">
+              <div class="console-title-group">
+                <span class="console-status-indicator" aria-hidden="true"></span>
+                <span class="console-title">Gemini 1.5 Pro Console</span>
+              </div>
+              <div class="console-telemetry">
+                <span class="telemetry-item">Rate: <span id="telemetry-rate">128 tok/s</span></span>
+                <span class="telemetry-item">Latency: <span id="telemetry-latency">184ms</span></span>
+              </div>
+            </div>
+
+            <div class="console-tabs" role="tablist" aria-label="Console prompts">
+              <button class="console-tab" role="tab" id="tab-code" aria-selected="true" aria-controls="panel-console" data-mode="code">Code synthesis</button>
+              <button class="console-tab" role="tab" id="tab-vision" aria-selected="false" aria-controls="panel-console" data-mode="vision">Multimodal vision</button>
+              <button class="console-tab" role="tab" id="tab-context" aria-selected="false" aria-controls="panel-console" data-mode="context">2M context search</button>
+              <button class="console-tab" role="tab" id="tab-audio" aria-selected="false" aria-controls="panel-console" data-mode="audio">Audio reasoning</button>
+            </div>
+
+            <div class="console-body" id="panel-console" role="tabpanel" aria-labelledby="tab-code">
+              <div class="prompt-input-row">
+                <input type="text" id="console-prompt-input" class="prompt-input" value="Write an async token bucket rate limiter in Python" aria-label="Gemini prompt input">
+                <button type="button" id="console-run-btn" class="btn btn--secondary btn--sm">Run query</button>
+              </div>
+
+              <div class="output-panel">
+                <div class="output-header">
+                  <span id="output-status">Inference complete</span>
+                  <button type="button" id="copy-output-btn" class="copy-btn">Copy code</button>
+                </div>
+                <pre class="output-code" id="console-output-text"><code><span class="kw">import</span> asyncio
+<span class="kw">import</span> time
+
+<span class="kw">class</span> <span class="fn">TokenBucket</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, capacity: <span class="fn">float</span>, fill_rate: <span class="fn">float</span>):
+        self.capacity = capacity
+        self.fill_rate = fill_rate
+        self.tokens = capacity
+        self.updated_at = time.monotonic()
+        self._lock = asyncio.Lock()
+
+    <span class="kw">async def</span> <span class="fn">consume</span>(self, tokens: <span class="fn">float</span> = 1.0) -&gt; <span class="fn">bool</span>:
+        <span class="kw">async with</span> self._lock:
+            now = time.monotonic()
+            elapsed = now - self.updated_at
+            self.tokens = min(self.capacity, self.tokens + elapsed * self.fill_rate)
+            self.updated_at = now
+            <span class="kw">if</span> self.tokens &gt;= tokens:
+                self.tokens -= tokens
+                <span class="kw">return True</span>
+            <span class="kw">return False</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Model Comparison Matrix -->
+    <section class="section" id="models" aria-labelledby="models-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="models-title" class="section-headline">Models tuned for scale.</h2>
+          <p class="section-desc">Compute efficiency from high throughput to deep analytical reasoning.</p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col">Context window</th>
+                <th scope="col">Throughput</th>
+                <th scope="col">MMLU score</th>
+                <th scope="col">Optimized role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="model-name-cell">
+                  <span>Gemini 1.5 Flash</span>
+                </td>
+                <td class="cell-highlight">1,000,000 tokens</td>
+                <td>150 tok/s</td>
+                <td>82.5%</td>
+                <td>High-frequency chat and real-time audio streaming</td>
+              </tr>
+              <tr>
+                <td class="model-name-cell">
+                  <span>Gemini 1.5 Pro</span>
+                </td>
+                <td class="cell-highlight">2,000,000 tokens</td>
+                <td>85 tok/s</td>
+                <td>90.0%</td>
+                <td>Complex multi-file codebases and 1-hour video analysis</td>
+              </tr>
+              <tr>
+                <td class="model-name-cell">
+                  <span>Gemini 1.0 Ultra</span>
+                </td>
+                <td>32,000 tokens</td>
+                <td>45 tok/s</td>
+                <td>90.04%</td>
+                <td>Scientific literature and formal symbolic reasoning</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Native Multimodal Architecture -->
+    <section class="section" id="multimodal" aria-labelledby="multimodal-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="multimodal-title" class="section-headline">One model. Every modality.</h2>
+          <p class="section-desc">Pre-trained natively across tokenized sensory streams without pipeline stitching.</p>
+        </div>
+
+        <div class="multimodal-grid">
+          <div class="modality-card">
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor"/>
+              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+              <path d="M21 15L16 10L5 21"/>
+            </svg>
+            <h3 class="modality-title">Pixel-level vision</h3>
+            <p class="modality-copy">Parses complex charts, dense diagrams, UI layouts, and handwritten manuscripts with spatial grounding.</p>
+            <span class="modality-stat">High resolution input</span>
+          </div>
+
+          <div class="modality-card">
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <path d="M12 2V22"/>
+              <path d="M17 5V19"/>
+              <path d="M7 8V16"/>
+              <path d="M22 10V14"/>
+              <path d="M2 10V14"/>
+            </svg>
+            <h3 class="modality-title">Acoustic audio</h3>
+            <p class="modality-copy">Understands nuanced vocal inflections, non-verbal signals, accent shifts, and ambient acoustic layers directly.</p>
+            <span class="modality-stat">Direct waveform tokens</span>
+          </div>
+
+          <div class="modality-card">
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M10 9L15 12L10 15V9Z" fill="currentColor"/>
+            </svg>
+            <h3 class="modality-title">Continuous video</h3>
+            <p class="modality-copy">Processes up to one hour of continuous footage at 1 frame per second for temporal reasoning and event location.</p>
+            <span class="modality-stat">1-hour video ingest</span>
+          </div>
+
+          <div class="modality-card">
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+            <h3 class="modality-title">Repository code</h3>
+            <p class="modality-copy">Constructs complete abstract syntax trees across 30,000 files to trace dependencies and refactor architectures.</p>
+            <span class="modality-stat">30,000+ files mapped</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context Recall Visualizer -->
+    <section class="section" id="recall" aria-labelledby="recall-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="recall-title" class="section-headline">Two million tokens. Total recall.</h2>
+          <p class="section-desc">Full needle-in-a-haystack retrieval accuracy across entire enterprise codebases.</p>
+        </div>
+
+        <div class="haystack-container">
+          <div class="haystack-controls">
+            <span class="footer-heading">Context depth test</span>
+            <div class="haystack-selector" role="group" aria-label="Select context depth">
+              <button type="button" class="depth-btn" aria-pressed="false" data-depth="100k">100k tokens</button>
+              <button type="button" class="depth-btn" aria-pressed="false" data-depth="500k">500k tokens</button>
+              <button type="button" class="depth-btn" aria-pressed="false" data-depth="1m">1m tokens</button>
+              <button type="button" class="depth-btn" aria-pressed="true" data-depth="2m">2m tokens</button>
+            </div>
+          </div>
+
+          <div class="haystack-canvas" id="haystack-grid" aria-label="Context token blocks visualization">
+            <!-- Populated via script or standard cells -->
+          </div>
+
+          <div class="haystack-metrics">
+            <div class="meta-stat">
+              <span class="meta-number" id="haystack-accuracy">99.9%</span>
+              <span class="meta-label">retrieval accuracy</span>
+            </div>
+            <div class="meta-stat">
+              <span class="meta-number" id="haystack-needle-pos">1,842,019</span>
+              <span class="meta-label">needle token position</span>
+            </div>
+            <div class="meta-stat">
+              <span class="meta-number" id="haystack-search-time">1.24s</span>
+              <span class="meta-label">search latency</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer API Quickstart -->
+    <section class="section" id="api" aria-labelledby="api-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="api-title" class="section-headline">Three lines to production.</h2>
+          <p class="section-desc">Unified SDKs for Python, Node.js, and standard HTTP endpoints.</p>
+        </div>
+
+        <div class="code-quickstart-wrapper">
+          <div class="code-tabs-bar">
+            <div class="code-tabs-list" role="tablist" aria-label="Programming languages">
+              <button class="code-tab" role="tab" id="code-tab-py" aria-selected="true" aria-controls="code-panel" data-lang="python">Python</button>
+              <button class="code-tab" role="tab" id="code-tab-js" aria-selected="false" aria-controls="code-panel" data-lang="javascript">Node.js</button>
+              <button class="code-tab" role="tab" id="code-tab-curl" aria-selected="false" aria-controls="code-panel" data-lang="curl">cURL</button>
+            </div>
+            <button type="button" id="copy-code-btn" class="copy-btn">Copy code</button>
+          </div>
+
+          <pre class="code-display" id="code-panel" role="tabpanel" aria-labelledby="code-tab-py"><code><span class="kw">from</span> google <span class="kw">import</span> genai
+
+client = genai.Client()
+response = client.models.generate_content(
+    model=<span class="str">"gemini-1.5-pro"</span>,
+    contents=[<span class="str">"Explain quantum decoherence in 2 sentences."</span>],
+)
+
+<span class="fn">print</span>(response.text)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing Call to Action -->
+    <section class="section" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="cta-title" class="section-headline">Build with Gemini.</h2>
+          <p class="section-desc">Access Google Gemini in Google AI Studio or deploy via Vertex AI.</p>
+          <div class="hero-actions">
+            <a href="https://aistudio.google.com" class="btn btn--primary" target="_blank" rel="noopener">Get API key</a>
+            <a href="https://ai.google.dev/gemini-api/docs" class="btn btn--secondary" target="_blank" rel="noopener">Read documentation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Colophon footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="#" class="brand-lockup">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C12 7.52 7.52 12 2 12C7.52 12 12 16.48 12 22C12 16.48 16.48 12 22 12C16.48 12 12 7.52 12 2Z" fill="currentColor"/>
+            </svg>
+            <span>Google Gemini</span>
+          </a>
+          <p class="footer-desc">Multimodal foundation model architecture developed by Google DeepMind and Google Research.</p>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-heading">Architecture</span>
+          <ul class="footer-list">
+            <li><a href="#models" class="footer-link">Gemini 1.5 Pro</a></li>
+            <li><a href="#models" class="footer-link">Gemini 1.5 Flash</a></li>
+            <li><a href="#multimodal" class="footer-link">Multimodal tokens</a></li>
+            <li><a href="#recall" class="footer-link">2M Context recall</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-heading">Developers</span>
+          <ul class="footer-list">
+            <li><a href="https://aistudio.google.com" class="footer-link" target="_blank" rel="noopener">Google AI Studio</a></li>
+            <li><a href="https://cloud.google.com/vertex-ai" class="footer-link" target="_blank" rel="noopener">Vertex AI</a></li>
+            <li><a href="https://ai.google.dev/gemini-api/docs" class="footer-link" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/google-gemini" class="footer-link" target="_blank" rel="noopener">SDK repositories</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-heading">Status</span>
+          <ul class="footer-list">
+            <li><span class="footer-link">API: Operational</span></li>
+            <li><span class="footer-link">Region: Global multi-zone</span></li>
+            <li><span class="footer-link">Compliance: ISO/IEC 27001</span></li>
+            <li><span class="footer-link">Latency: 180ms p50</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="colophon-bottom">
+        <span>Google DeepMind engineering</span>
+        <span>Google LLC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
