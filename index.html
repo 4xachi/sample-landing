@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Google Gemini is Google's multimodal AI model, built from the ground up for native reasoning across text, code, audio, and vision.">
-  <title>Google Gemini: Multimodal Intelligence</title>
+  <meta name="description"
+    content="Google Gemini is Google's multimodal AI model, built from the ground up for native reasoning across text, code, audio, and vision.">
+  <title>Google Gemini</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Mona+Sans:wdth,wght@100,400;100,500;125,300&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Mona+Sans:wdth,wght@100,400;100,500;125,300&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
   <!-- Global site header -->
   <header class="site-header">
@@ -17,7 +22,8 @@
       <nav class="nav-bar" aria-label="Main navigation">
         <a href="#" class="brand-lockup">
           <svg class="brand-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2C12 7.52 7.52 12 2 12C7.52 12 12 16.48 12 22C12 16.48 16.48 12 22 12C16.48 12 12 7.52 12 2Z" fill="currentColor"/>
+            <path d="M12 2C12 7.52 7.52 12 2 12C7.52 12 12 16.48 12 22C12 16.48 16.48 12 22 12C16.48 12 12 7.52 12 2Z"
+              fill="currentColor" />
           </svg>
           <span>Google Gemini</span>
           <span class="brand-badge">gemini-1.5-pro</span>
@@ -31,7 +37,8 @@
         </ul>
 
         <div class="nav-actions">
-          <a href="https://aistudio.google.com" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Try Studio</a>
+          <a href="https://aistudio.google.com" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Try
+            Studio</a>
         </div>
       </nav>
     </div>
@@ -46,7 +53,8 @@
             <h1 id="hero-title" class="hero-headline">Intelligence at multimodal scale.</h1>
             <p class="hero-lead">Native reasoning across text, code, audio, and visual inputs.</p>
             <div class="hero-actions">
-              <a href="https://aistudio.google.com" class="btn btn--primary" target="_blank" rel="noopener">Open Studio</a>
+              <a href="https://aistudio.google.com" class="btn btn--primary" target="_blank" rel="noopener">Open
+                Studio</a>
               <a href="#models" class="btn btn--secondary">Explore models</a>
             </div>
 
@@ -80,15 +88,20 @@
             </div>
 
             <div class="console-tabs" role="tablist" aria-label="Console prompts">
-              <button class="console-tab" role="tab" id="tab-code" aria-selected="true" aria-controls="panel-console" data-mode="code">Code synthesis</button>
-              <button class="console-tab" role="tab" id="tab-vision" aria-selected="false" aria-controls="panel-console" data-mode="vision">Multimodal vision</button>
-              <button class="console-tab" role="tab" id="tab-context" aria-selected="false" aria-controls="panel-console" data-mode="context">2M context search</button>
-              <button class="console-tab" role="tab" id="tab-audio" aria-selected="false" aria-controls="panel-console" data-mode="audio">Audio reasoning</button>
+              <button class="console-tab" role="tab" id="tab-code" aria-selected="true" aria-controls="panel-console"
+                data-mode="code">Code synthesis</button>
+              <button class="console-tab" role="tab" id="tab-vision" aria-selected="false" aria-controls="panel-console"
+                data-mode="vision">Multimodal vision</button>
+              <button class="console-tab" role="tab" id="tab-context" aria-selected="false"
+                aria-controls="panel-console" data-mode="context">2M context search</button>
+              <button class="console-tab" role="tab" id="tab-audio" aria-selected="false" aria-controls="panel-console"
+                data-mode="audio">Audio reasoning</button>
             </div>
 
             <div class="console-body" id="panel-console" role="tabpanel" aria-labelledby="tab-code">
               <div class="prompt-input-row">
-                <input type="text" id="console-prompt-input" class="prompt-input" value="Write an async token bucket rate limiter in Python" aria-label="Gemini prompt input">
+                <input type="text" id="console-prompt-input" class="prompt-input"
+                  value="Write an async token bucket rate limiter in Python" aria-label="Gemini prompt input">
                 <button type="button" id="console-run-btn" class="btn btn--secondary btn--sm">Run query</button>
               </div>
 
@@ -188,46 +201,54 @@
 
         <div class="multimodal-grid">
           <div class="modality-card">
-            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor"/>
-              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-              <path d="M21 15L16 10L5 21"/>
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" />
+              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+              <path d="M21 15L16 10L5 21" />
             </svg>
             <h3 class="modality-title">Pixel-level vision</h3>
-            <p class="modality-copy">Parses complex charts, dense diagrams, UI layouts, and handwritten manuscripts with spatial grounding.</p>
+            <p class="modality-copy">Parses complex charts, dense diagrams, UI layouts, and handwritten manuscripts with
+              spatial grounding.</p>
             <span class="modality-stat">High resolution input</span>
           </div>
 
           <div class="modality-card">
-            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-              <path d="M12 2V22"/>
-              <path d="M17 5V19"/>
-              <path d="M7 8V16"/>
-              <path d="M22 10V14"/>
-              <path d="M2 10V14"/>
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              aria-hidden="true">
+              <path d="M12 2V22" />
+              <path d="M17 5V19" />
+              <path d="M7 8V16" />
+              <path d="M22 10V14" />
+              <path d="M2 10V14" />
             </svg>
             <h3 class="modality-title">Acoustic audio</h3>
-            <p class="modality-copy">Understands nuanced vocal inflections, non-verbal signals, accent shifts, and ambient acoustic layers directly.</p>
+            <p class="modality-copy">Understands nuanced vocal inflections, non-verbal signals, accent shifts, and
+              ambient acoustic layers directly.</p>
             <span class="modality-stat">Direct waveform tokens</span>
           </div>
 
           <div class="modality-card">
-            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path d="M10 9L15 12L10 15V9Z" fill="currentColor"/>
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="M10 9L15 12L10 15V9Z" fill="currentColor" />
             </svg>
             <h3 class="modality-title">Continuous video</h3>
-            <p class="modality-copy">Processes up to one hour of continuous footage at 1 frame per second for temporal reasoning and event location.</p>
+            <p class="modality-copy">Processes up to one hour of continuous footage at 1 frame per second for temporal
+              reasoning and event location.</p>
             <span class="modality-stat">1-hour video ingest</span>
           </div>
 
           <div class="modality-card">
-            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-              <polyline points="16 18 22 12 16 6"/>
-              <polyline points="8 6 2 12 8 18"/>
+            <svg class="modality-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              aria-hidden="true">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
             </svg>
             <h3 class="modality-title">Repository code</h3>
-            <p class="modality-copy">Constructs complete abstract syntax trees across 30,000 files to trace dependencies and refactor architectures.</p>
+            <p class="modality-copy">Constructs complete abstract syntax trees across 30,000 files to trace dependencies
+              and refactor architectures.</p>
             <span class="modality-stat">30,000+ files mapped</span>
           </div>
         </div>
@@ -286,9 +307,12 @@
         <div class="code-quickstart-wrapper">
           <div class="code-tabs-bar">
             <div class="code-tabs-list" role="tablist" aria-label="Programming languages">
-              <button class="code-tab" role="tab" id="code-tab-py" aria-selected="true" aria-controls="code-panel" data-lang="python">Python</button>
-              <button class="code-tab" role="tab" id="code-tab-js" aria-selected="false" aria-controls="code-panel" data-lang="javascript">Node.js</button>
-              <button class="code-tab" role="tab" id="code-tab-curl" aria-selected="false" aria-controls="code-panel" data-lang="curl">cURL</button>
+              <button class="code-tab" role="tab" id="code-tab-py" aria-selected="true" aria-controls="code-panel"
+                data-lang="python">Python</button>
+              <button class="code-tab" role="tab" id="code-tab-js" aria-selected="false" aria-controls="code-panel"
+                data-lang="javascript">Node.js</button>
+              <button class="code-tab" role="tab" id="code-tab-curl" aria-selected="false" aria-controls="code-panel"
+                data-lang="curl">cURL</button>
             </div>
             <button type="button" id="copy-code-btn" class="copy-btn">Copy code</button>
           </div>
@@ -313,8 +337,10 @@ response = client.models.generate_content(
           <h2 id="cta-title" class="section-headline">Build with Gemini.</h2>
           <p class="section-desc">Access Google Gemini in Google AI Studio or deploy via Vertex AI.</p>
           <div class="hero-actions">
-            <a href="https://aistudio.google.com" class="btn btn--primary" target="_blank" rel="noopener">Get API key</a>
-            <a href="https://ai.google.dev/gemini-api/docs" class="btn btn--secondary" target="_blank" rel="noopener">Read documentation</a>
+            <a href="https://aistudio.google.com" class="btn btn--primary" target="_blank" rel="noopener">Get API
+              key</a>
+            <a href="https://ai.google.dev/gemini-api/docs" class="btn btn--secondary" target="_blank"
+              rel="noopener">Read documentation</a>
           </div>
         </div>
       </div>
@@ -328,11 +354,13 @@ response = client.models.generate_content(
         <div class="footer-brand-col">
           <a href="#" class="brand-lockup">
             <svg class="brand-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 2C12 7.52 7.52 12 2 12C7.52 12 12 16.48 12 22C12 16.48 16.48 12 22 12C16.48 12 12 7.52 12 2Z" fill="currentColor"/>
+              <path d="M12 2C12 7.52 7.52 12 2 12C7.52 12 12 16.48 12 22C12 16.48 16.48 12 22 12C16.48 12 12 7.52 12 2Z"
+                fill="currentColor" />
             </svg>
             <span>Google Gemini</span>
           </a>
-          <p class="footer-desc">Multimodal foundation model architecture developed by Google DeepMind and Google Research.</p>
+          <p class="footer-desc">Multimodal foundation model architecture developed by Google DeepMind and Google
+            Research.</p>
         </div>
 
         <div class="footer-nav-col">
@@ -348,10 +376,14 @@ response = client.models.generate_content(
         <div class="footer-nav-col">
           <span class="footer-heading">Developers</span>
           <ul class="footer-list">
-            <li><a href="https://aistudio.google.com" class="footer-link" target="_blank" rel="noopener">Google AI Studio</a></li>
-            <li><a href="https://cloud.google.com/vertex-ai" class="footer-link" target="_blank" rel="noopener">Vertex AI</a></li>
-            <li><a href="https://ai.google.dev/gemini-api/docs" class="footer-link" target="_blank" rel="noopener">Documentation</a></li>
-            <li><a href="https://github.com/google-gemini" class="footer-link" target="_blank" rel="noopener">SDK repositories</a></li>
+            <li><a href="https://aistudio.google.com" class="footer-link" target="_blank" rel="noopener">Google AI
+                Studio</a></li>
+            <li><a href="https://cloud.google.com/vertex-ai" class="footer-link" target="_blank" rel="noopener">Vertex
+                AI</a></li>
+            <li><a href="https://ai.google.dev/gemini-api/docs" class="footer-link" target="_blank"
+                rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/google-gemini" class="footer-link" target="_blank" rel="noopener">SDK
+                repositories</a></li>
           </ul>
         </div>
 
@@ -375,4 +407,5 @@ response = client.models.generate_content(
 
   <script src="./app.js"></script>
 </body>
+
 </html>
